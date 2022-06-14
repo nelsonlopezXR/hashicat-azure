@@ -35,9 +35,7 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name  = azurerm_resource_group.myresourcegroup.name
   address_prefixes     = [var.subnet_prefix]
-  tags = {
-    environment = "Production"
-  }
+  
 }
 
 resource "azurerm_network_security_group" "catapp-sg" {
@@ -80,9 +78,7 @@ resource "azurerm_network_security_group" "catapp-sg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-  tags = {
-    environment = "Production"
-  }
+ 
 }
 
 resource "azurerm_network_interface" "catapp-nic" {
@@ -96,9 +92,7 @@ resource "azurerm_network_interface" "catapp-nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.catapp-pip.id
   }
-  tags = {
-    environment = "Production"
-  }
+ 
 }
 
 resource "azurerm_network_interface_security_group_association" "catapp-nic-sg-ass" {
